@@ -22,7 +22,7 @@
               }
             }
           ],
-          "name": "dwarvencraft:mythriteoreblock"
+          "name": "minecraft:gold_ore"
         }
       ]
     },
@@ -68,7 +68,7 @@
               }
             }
           ],
-          "name": "dwarvencraft:mythritesand"
+          "name": "dwarvencraft:goldsand"
         }
       ]
     },
@@ -120,7 +120,7 @@
               }
             }
           ],
-          "name": "dwarvencraft:mythritechunk"
+          "name": "dwarvencraft:goldchunk"
         }
       ]
     }

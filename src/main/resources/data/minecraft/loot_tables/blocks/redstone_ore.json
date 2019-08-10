@@ -22,7 +22,7 @@
               }
             }
           ],
-          "name": "dwarvencraft:mythriteoreblock"
+          "name": "minecraft:redstone_ore"
         }
       ]
     },
@@ -54,8 +54,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1.0,
-                "max": 3.0,
+                "min": 4.0,
+                "max": 5.0,
                 "type": "minecraft:uniform"
               }
             },
@@ -68,7 +68,7 @@
               }
             }
           ],
-          "name": "dwarvencraft:mythritesand"
+          "name": "minecraft:redstone"
         }
       ]
     },
@@ -120,7 +120,7 @@
               }
             }
           ],
-          "name": "dwarvencraft:mythritechunk"
+          "name": "dwarvencraft:redstonechunk"
         }
       ]
     }
