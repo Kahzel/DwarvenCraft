@@ -34,7 +34,15 @@ public class ItemInit {
         itemRegistryEvent.getRegistry().register(new Item(sandProps).setRegistryName("ironsand"));
         itemRegistryEvent.getRegistry().register(new Item(sandProps).setRegistryName("goldsand"));
 
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("myhtritechunk"));
         itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("malachitechunk"));
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("tungstenchunk"));
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("copperchunk"));
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("tinchunk"));
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("ironchunk"));
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("goldchunk"));
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("redstonechunk"));
+
 
     }
 }
