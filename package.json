@@ -1,6 +1,6 @@
 {
   "name": "dwarvencraft",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "NPM Project created for convenience using Commitizen and standard-version.",
   "main": "index.js",
   "dependencies": {},
