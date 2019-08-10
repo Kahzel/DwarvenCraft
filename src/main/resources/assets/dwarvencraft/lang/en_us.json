@@ -1,0 +1,22 @@
+{
+  "block.dwarvencraft.mythriteoreblock": "Mythrite Ore",
+  "block.dwarvencraft.malachiteoreblock": "Malachite Ore",
+  "block.dwarvencraft.tungstenoreblock": "Tungsten Ore",
+  "block.dwarvencraft.copperoreblock": "Copper Ore",
+  "block.dwarvencraft.tinoreblock": "Tin Ore",
+
+  "item.dwarvencraft.mythritesand": "Mythrite Sand",
+  "item.dwarvencraft.malachitesand": "Malachite Sand",
+  "item.dwarvencraft.tungstensand": "Tungsten Sand",
+  "item.dwarvencraft.coppersand": "Copper Sand",
+  "item.dwarvencraft.tinsand": "Tin Sand",
+  "item.dwarvencraft.ironsand": "Iron Sand",
+  "item.dwarvencraft.goldsand": "Gold Sand",
+
+  "item.dwarvencraft.malachitechunk": "Malachite Chunk",
+
+
+
+  "_comment": "Creative Tabs",
+  "itemGroup.dwarvencraft": "DwarvenCraft"
+}
