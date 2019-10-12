@@ -14,8 +14,19 @@
   "item.dwarvencraft.goldsand": "Gold Sand",
 
   "item.dwarvencraft.malachitechunk": "Malachite Chunk",
+  "item.dwarvencraft.mythritechunk": "Mythrite Chunk",
+  "item.dwarvencraft.tungstenchunk": "Tungsten Chunk",
+  "item.dwarvencraft.tinchunk": "Tin Chunk",
+  "item.dwarvencraft.copperchunk": "Copper Chunk",
+  "item.dwarvencraft.ironchunk": "Iron Chunk",
+  "item.dwarvencraft.goldchunk": "Gold Chunk",
+  "item.dwarvencraft.redstonechunk": "Redstone Chunk",
 
-
+  "item.dwarvencraft.malachiteingot": "Malachite Ingot",
+  "item.dwarvencraft.mythriteingot": "Mythrite Ingot",
+  "item.dwarvencraft.tungsteningot": "Tungsten Ingot",
+  "item.dwarvencraft.copperingot": "Copper Ingot",
+  "item.dwarvencraft.tiningot": "Tin Ingot",
 
   "_comment": "Creative Tabs",
   "itemGroup.dwarvencraft": "DwarvenCraft"
