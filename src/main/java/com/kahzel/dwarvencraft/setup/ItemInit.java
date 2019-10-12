@@ -43,6 +43,8 @@ public class ItemInit {
         itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("goldchunk"));
         itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("redstonechunk"));
 
+        itemRegistryEvent.getRegistry().register(new Item(blockProps).setRegistryName("malachiteingot"));
+
 
     }
 }
