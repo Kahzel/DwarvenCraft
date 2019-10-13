@@ -24,6 +24,8 @@ public class ItemInit {
                 .setRegistryName("copperoreblock"));
         itemRegistryEvent.getRegistry().register(new BlockItem(BlockInit.TIN_ORE, baseProps)
                 .setRegistryName("tinoreblock"));
+        itemRegistryEvent.getRegistry().register(new BlockItem(BlockInit.ORE_SINTERER, baseProps)
+                .setRegistryName("oresintererblock"));
 
         //Item setup
         itemRegistryEvent.getRegistry().register(new Item(sandProps).setRegistryName("mythritesand"));

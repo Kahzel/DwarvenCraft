@@ -13,7 +13,7 @@ public class Setup {
         }
     };
 
-    public void init() {
-        // todo
+    public void preinit() {
+        //todo
     }
 }

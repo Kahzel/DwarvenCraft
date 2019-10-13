@@ -1,12 +1,20 @@
 package com.kahzel.dwarvencraft;
 
 import com.kahzel.dwarvencraft.blocks.BaseOreBlock;
+import com.kahzel.dwarvencraft.blocks.OreSintererBlock;
+import com.kahzel.dwarvencraft.containers.OreSintererContainer;
 import com.kahzel.dwarvencraft.setup.*;
+import com.kahzel.dwarvencraft.tileentities.OreSintererEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -28,7 +36,7 @@ import java.util.stream.Collectors;
 public class DwarvenCraft {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-    public static IProxy PROXY = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
+    public static IProxy PROXY;
     public static final Setup SETUP = new Setup();
 
     public DwarvenCraft() {
@@ -43,13 +51,15 @@ public class DwarvenCraft {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        PROXY = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
-        SETUP.init();
+        SETUP.preinit();
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        PROXY.init();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -85,14 +95,36 @@ public class DwarvenCraft {
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            LOGGER.info("Registering base ore block");
+            LOGGER.info("Registering ore blocks");
             for(String name : BaseOreBlock.ORES)
                 blockRegistryEvent.getRegistry().register(new BaseOreBlock(name));
+            LOGGER.info("Registering sintering furnace");
+            blockRegistryEvent.getRegistry().register(new OreSintererBlock());
+        }
+
+        @SubscribeEvent
+        public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> entityRegistryEvent) {
+            entityRegistryEvent.getRegistry().register(
+                    TileEntityType.Builder.create(OreSintererEntity::new, BlockInit.ORE_SINTERER)
+                    .build(null)
+                    .setRegistryName("oresintererblock")
+            );
         }
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
             ItemInit.init(itemRegistryEvent);
         }
+
+        @SubscribeEvent
+        public static void onContainerRegistry(final RegistryEvent.Register<ContainerType<?>> containerRegistryEvent) {
+            containerRegistryEvent.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+                        BlockPos pos = data.readBlockPos();
+                        return new OreSintererContainer(windowId, DwarvenCraft.PROXY.getClientWorld(),
+                        pos, inv, DwarvenCraft.PROXY.getClientPlayer());
+            }).setRegistryName("oresintererblock"));
+
+        }
+
     }
 }
