@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 @Mod("dwarvencraft")
 public class DwarvenCraft {
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static IProxy PROXY;
     public static final Setup SETUP = new Setup();
 

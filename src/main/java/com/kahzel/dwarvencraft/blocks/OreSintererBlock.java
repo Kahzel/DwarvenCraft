@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -51,7 +50,6 @@ public class OreSintererBlock extends Block {
     public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
         if (!world.isRemote) {
             TileEntity tileEntity = world.getTileEntity(pos);
-            LOGGER.info(tileEntity);
             if (tileEntity instanceof INamedContainerProvider) {
                 NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) tileEntity, tileEntity.getPos());
             } else {

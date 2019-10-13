@@ -1,6 +1,5 @@
 package com.kahzel.dwarvencraft.screens;
 
-import com.kahzel.dwarvencraft.DwarvenCraft;
 import com.kahzel.dwarvencraft.containers.OreSintererContainer;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -22,6 +21,9 @@ public class OreSintererScreen extends ContainerScreen<OreSintererContainer> {
     }
 
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        String s = this.title.getFormattedText();
+        this.font.drawString(s, (float)(this.xSize / 2 - this.font.getStringWidth(s) / 2), 6.0F, 4210752);
+        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float)(this.ySize - 96 + 2), 4210752);
     }
 
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {

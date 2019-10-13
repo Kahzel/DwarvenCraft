@@ -1,5 +1,6 @@
 package com.kahzel.dwarvencraft.tileentities;
 
+import com.kahzel.dwarvencraft.DwarvenCraft;
 import com.kahzel.dwarvencraft.containers.OreSintererContainer;
 import com.kahzel.dwarvencraft.setup.BlockInit;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,6 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
@@ -30,7 +32,7 @@ import javax.annotation.Nullable;
 
 public class OreSintererEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
     private static final int[] SLOTS_UP = new int[]{0};
-    private static final int[] SLOTS_DOWN = new int[]{2, 1};
+    private static final int[] SLOTS_DOWN = new int[]{2};
     private static final int[] SLOTS_HORIZONTAL = new int[]{1};
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
@@ -51,13 +53,14 @@ public class OreSintererEntity extends TileEntity implements ITickableTileEntity
         return new ItemStackHandler(3) {
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
                 if (slot == 1) {
-                    return stack.getBurnTime() > 0;
+                    int bt = ForgeHooks.getBurnTime(stack);
+                    return bt > 0;
                 }
                 return true;
             }
 
             public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-                if (slot == 1 && stack.getBurnTime() > 0) {
+                if (slot == 1 && ForgeHooks.getBurnTime(stack) > 0) {
                     return super.insertItem(1, stack, simulate);
                 } else if (slot == 0) {
                     return super.insertItem(0, stack, simulate);

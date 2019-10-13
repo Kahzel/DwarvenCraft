@@ -2,7 +2,6 @@
   "type": "minecraft:smelting",
   "ingredient": {
     "item": "dwarvencraft:malachitechunk",
-    "count": 2
   },
   "result": "dwarvencraft:malachiteingot",
   "experience": 0.9,
