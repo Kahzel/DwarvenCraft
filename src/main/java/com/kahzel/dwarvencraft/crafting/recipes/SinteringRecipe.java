@@ -78,7 +78,7 @@ public class SinteringRecipe implements IRecipe<IInventory> {
             SinteringRecipe recipe = new SinteringRecipe(recipeId);
             recipe.processTime = JSONUtils.getInt(json, "process_time", 400);
             recipe.ingredient = Ingredient.deserialize(json.get("ingredient"));
-            recipe.ingredientCount = JSONUtils.getInt(json.get("ingredient").getAsJsonObject(), "count", 1);
+            recipe.ingredientCount = JSONUtils.getInt(json.get("ingredient").getAsJsonObject(), "count", 2);
             recipe.result = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
             return recipe;
         }

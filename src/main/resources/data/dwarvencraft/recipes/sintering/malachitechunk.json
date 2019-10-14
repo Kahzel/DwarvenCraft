@@ -1,0 +1,9 @@
+{
+  "type": "dwarvencraft:sintering",
+  "ingredient": {
+    "item": "dwarvencraft:malachitesand"
+  },
+  "result": {
+    "item": "dwarvencraft:malachitechunk"
+  }
+}

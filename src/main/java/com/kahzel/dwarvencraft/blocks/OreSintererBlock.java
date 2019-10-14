@@ -43,6 +43,11 @@ public class OreSintererBlock extends Block {
         }
     }
 
+    @Override
+    public int getLightValue(BlockState state) {
+        return state.get(LIT) ? state.getLightValue() : 0;
+    }
+
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
         return Direction.getFacingFromVector((float) (entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
     }
