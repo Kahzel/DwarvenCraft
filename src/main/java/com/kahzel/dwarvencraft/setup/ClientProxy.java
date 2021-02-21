@@ -1,14 +1,11 @@
 package com.kahzel.dwarvencraft.setup;
 
-import com.kahzel.dwarvencraft.DwarvenCraft;
-import com.kahzel.dwarvencraft.containers.OreSintererContainer;
-import com.kahzel.dwarvencraft.screens.OreSintererScreen;
-import jdk.nashorn.internal.ir.Block;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererContainer;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeConfig;
 
 public class ClientProxy implements IProxy {
 

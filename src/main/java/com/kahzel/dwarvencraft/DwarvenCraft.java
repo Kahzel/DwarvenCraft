@@ -1,16 +1,14 @@
 package com.kahzel.dwarvencraft;
 
 import com.kahzel.dwarvencraft.blocks.BaseOreBlock;
-import com.kahzel.dwarvencraft.blocks.OreSintererBlock;
-import com.kahzel.dwarvencraft.containers.OreSintererContainer;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererBlock;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererContainer;
 import com.kahzel.dwarvencraft.setup.*;
-import com.kahzel.dwarvencraft.tileentities.OreSintererEntity;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;

@@ -1,11 +1,9 @@
-package com.kahzel.dwarvencraft.containers;
+package com.kahzel.dwarvencraft.blocks.sinterer;
 
 import com.kahzel.dwarvencraft.setup.BlockInit;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -14,16 +12,14 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-import javax.annotation.Nullable;
-
 public class OreSintererContainer extends Container {
-    private TileEntity tileEntity;
+    private OreSintererEntity tileEntity;
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
 
     public OreSintererContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
         super(BlockInit.SINTERER_CONTAINER, windowId);
-        tileEntity = world.getTileEntity(pos);
+        tileEntity = (OreSintererEntity) world.getTileEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
 
@@ -64,5 +60,13 @@ public class OreSintererContainer extends Container {
         // Hotbar
         topRow += 58;
         addSlotRange(this.playerInventory, 0, leftCol, topRow, 9, 18);
+    }
+
+    public int getProcessTime() {
+        return this.tileEntity.getProcessTime();
+    }
+
+    public int getProgress() {
+        return this.tileEntity.getProgress();
     }
 }

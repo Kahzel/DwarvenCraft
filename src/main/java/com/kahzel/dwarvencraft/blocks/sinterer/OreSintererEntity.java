@@ -1,17 +1,13 @@
-package com.kahzel.dwarvencraft.tileentities;
+package com.kahzel.dwarvencraft.blocks.sinterer;
 
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.google.common.collect.Maps;
-import com.kahzel.dwarvencraft.blocks.OreSintererBlock;
-import com.kahzel.dwarvencraft.containers.OreSintererContainer;
 import com.kahzel.dwarvencraft.crafting.recipes.SinteringRecipe;
 import com.kahzel.dwarvencraft.setup.BlockInit;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.IRecipeHelperPopulator;
-import net.minecraft.inventory.IRecipeHolder;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
@@ -19,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
@@ -132,7 +127,7 @@ public class OreSintererEntity extends LockableTileEntity implements ITickableTi
                     ++this.cookTime;
                     if (this.cookTime == this.cookTimeTotal) {
                         this.cookTime = 0;
-                        this.cookTimeTotal = this.getProccessTime();
+                        this.cookTimeTotal = this.getProcessTime();
                         this.finalizeCraft(irecipe);
                         DwarvenCraft.LOGGER.info("Recipe is smelted");
                         isdirty = true;
@@ -154,10 +149,14 @@ public class OreSintererEntity extends LockableTileEntity implements ITickableTi
         }
     }
 
-    protected int getProccessTime() {
+    protected int getProcessTime() {
         return this.world.getRecipeManager().getRecipe(this.recipeType,
                 this,
                 this.world).map(SinteringRecipe::getProcessTime).orElse(400);
+    }
+
+    protected int getProgress() {
+        return this.cookTime;
     }
 
     private void finalizeCraft(@Nullable SinteringRecipe recipe) {
@@ -200,14 +199,14 @@ public class OreSintererEntity extends LockableTileEntity implements ITickableTi
         return this.burnTime > 0;
     }
 
-    public void read(CompoundNBT tag) {
+    public void read(BlockState state, CompoundNBT tag) {
         CompoundNBT invTag = tag.getCompound("inv");
         ItemStackHelper.loadAllItems(invTag, this.items);
         this.burnTime = tag.getInt("BurnTime");
         this.cookTime = tag.getInt("CookTime");
         this.cookTimeTotal = tag.getInt("CookTimeTotal");
         handler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(invTag));
-        super.read(tag);
+        super.read(state, tag);
     }
 
     public CompoundNBT write(CompoundNBT tag) {
@@ -289,7 +288,7 @@ public class OreSintererEntity extends LockableTileEntity implements ITickableTi
         }
 
         if (index == 0 && !flag) {
-            this.cookTimeTotal = this.getProccessTime();
+            this.cookTimeTotal = this.getProcessTime();
             this.cookTime = 0;
             this.markDirty();
         }

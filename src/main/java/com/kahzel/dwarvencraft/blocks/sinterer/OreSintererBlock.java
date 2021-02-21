@@ -1,6 +1,5 @@
-package com.kahzel.dwarvencraft.blocks;
+package com.kahzel.dwarvencraft.blocks.sinterer;
 
-import com.kahzel.dwarvencraft.tileentities.OreSintererEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
@@ -12,10 +11,7 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
@@ -43,16 +39,14 @@ public class OreSintererBlock extends Block {
         }
     }
 
-    @Override
-    public int getLightValue(BlockState state) {
-        return state.get(LIT) ? state.getLightValue() : 0;
-    }
-
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
-        return Direction.getFacingFromVector((float) (entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
+        return Direction.getFacingFromVector((float) (entity.getPosX() - clickedBlock.getX()),
+                (float) (entity.getPosY() - clickedBlock.getY()), (float) (entity.getPosZ() - clickedBlock.getZ()));
     }
 
-    public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult result) {
+    @Override
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player,
+                                             Hand hand, BlockRayTraceResult trace) {
         if (!world.isRemote) {
             TileEntity tileEntity = world.getTileEntity(pos);
             if (tileEntity instanceof INamedContainerProvider) {
@@ -60,9 +54,9 @@ public class OreSintererBlock extends Block {
             } else {
                 throw new IllegalStateException("Our named container provider is missing!");
             }
-            return true;
+            return ActionResultType.SUCCESS;
         }
-        return super.onBlockActivated(state, world, pos, player, hand, result);
+        return super.onBlockActivated(state, world, pos, player, hand, trace);
     }
 
     @Nullable

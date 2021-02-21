@@ -1,9 +1,9 @@
 package com.kahzel.dwarvencraft.setup;
 
 import com.kahzel.dwarvencraft.blocks.BaseOreBlock;
-import com.kahzel.dwarvencraft.blocks.OreSintererBlock;
-import com.kahzel.dwarvencraft.containers.OreSintererContainer;
-import com.kahzel.dwarvencraft.tileentities.OreSintererEntity;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererBlock;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererContainer;
+import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererEntity;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
