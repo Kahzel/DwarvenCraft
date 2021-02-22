@@ -5,7 +5,10 @@ import com.kahzel.dwarvencraft.blocks.sinterer.OreSintererScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ClientProxy implements IProxy {
 
@@ -21,6 +24,6 @@ public class ClientProxy implements IProxy {
     }
 
     public ClientProxy() {
-        RecipeInit.init();
+        FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(IRecipeSerializer.class, RecipeInit::init);
     }
 }

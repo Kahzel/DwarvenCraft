@@ -9,6 +9,7 @@ import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistryEntry;
+import net.minecraftforge.registries.ObjectHolder;
 
 public class SinteringRecipe implements IRecipe<IInventory> {
 
@@ -18,6 +19,7 @@ public class SinteringRecipe implements IRecipe<IInventory> {
             return SINTERING.toString();
         }
     };
+
     public static final SinteringSerializer SINTERING_SERIALIZER = new SinteringSerializer();
 
 
@@ -73,6 +75,10 @@ public class SinteringRecipe implements IRecipe<IInventory> {
     }
 
     public static class SinteringSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<SinteringRecipe> {
+
+        SinteringSerializer() {
+            this.setRegistryName(SINTERING);
+        }
 
         public SinteringRecipe read(ResourceLocation recipeId, JsonObject json) {
             SinteringRecipe recipe = new SinteringRecipe(recipeId);
