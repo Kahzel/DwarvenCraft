@@ -1,8 +1,0 @@
-{
-  "parent": "block/orientable",
-  "textures": {
-    "top": "minecraft:block/furnace_top",
-    "front": "dwarvencraft:block/sinterer_front",
-    "side": "minecraft:block/furnace_side"
-  }
-}

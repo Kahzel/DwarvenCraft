@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "dwarvencraft:malachitechunk"
-  },
-  "result": "dwarvencraft:malachiteingot",
-  "experience": 0.9,
-  "cookingtime": 200
-}
